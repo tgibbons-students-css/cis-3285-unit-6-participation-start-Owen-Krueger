@@ -81,10 +81,10 @@
 			// lblTitle
 			// 
 			this.lblTitle.AutoSize = true;
-			this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblTitle.Location = new System.Drawing.Point(14, 8);
 			this.lblTitle.Name = "lblTitle";
-			this.lblTitle.Size = new System.Drawing.Size(264, 25);
+			this.lblTitle.Size = new System.Drawing.Size(279, 24);
 			this.lblTitle.TabIndex = 4;
 			this.lblTitle.Text = "Wells Fargo Account Creator";
 			// 
@@ -95,6 +95,7 @@
 			this.listCurrentAccounts.Name = "listCurrentAccounts";
 			this.listCurrentAccounts.Size = new System.Drawing.Size(120, 95);
 			this.listCurrentAccounts.TabIndex = 6;
+			this.listCurrentAccounts.SelectedIndexChanged += new System.EventHandler(this.listCurrentAccounts_SelectedIndexChanged);
 			// 
 			// txtDepositAmount
 			// 
@@ -107,6 +108,7 @@
 			// 
 			this.txtAccountBalance.Location = new System.Drawing.Point(286, 119);
 			this.txtAccountBalance.Name = "txtAccountBalance";
+			this.txtAccountBalance.ReadOnly = true;
 			this.txtAccountBalance.Size = new System.Drawing.Size(100, 20);
 			this.txtAccountBalance.TabIndex = 8;
 			// 
@@ -143,6 +145,7 @@
 			this.btnDeposit.TabIndex = 12;
 			this.btnDeposit.Text = "Deposit";
 			this.btnDeposit.UseVisualStyleBackColor = true;
+			this.btnDeposit.Click += new System.EventHandler(this.btnDeposit_Click);
 			// 
 			// btnWithdraw
 			// 
@@ -152,6 +155,7 @@
 			this.btnWithdraw.TabIndex = 13;
 			this.btnWithdraw.Text = "Withdraw";
 			this.btnWithdraw.UseVisualStyleBackColor = true;
+			this.btnWithdraw.Click += new System.EventHandler(this.btnWithdraw_Click);
 			// 
 			// Form1
 			// 
