@@ -29,11 +29,16 @@ namespace AccountFormsApp
 		//Add Account to account list and create new account
 		private void btnAddAccount_Click(object sender, EventArgs e)
 		{
-			string accountName = txtAccountName.Text;
-			accService.CreateAccount(accountName, AccountType.Silver);
+			//Check if Account Name is Null or a whitespace
+			if (!string.IsNullOrWhiteSpace(txtAccountName.Text))
+			{
+				string accountName = txtAccountName.Text;
+				accService.CreateAccount(accountName, AccountType.Silver);
 
-			listCurrentAccounts.Items.Add(accountName);
-			txtAccountName.ResetText();
+				listCurrentAccounts.Items.Add(accountName);
+				txtAccountName.ResetText();
+
+			}
 		}
 
 		//Get balance from selected account
