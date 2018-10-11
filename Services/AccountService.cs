@@ -50,9 +50,7 @@ namespace Services
         // withdrawal the given account into the account named
         {
 			AccountBase acc = FindAccount(accountName);
-			amount *= -1;
-			acc.AddTransaction(amount);
-            //throw new NotImplementedException();
+			acc.AddTransaction(amount*-1);
         }
 
         private AccountBase FindAccount(string accountName)

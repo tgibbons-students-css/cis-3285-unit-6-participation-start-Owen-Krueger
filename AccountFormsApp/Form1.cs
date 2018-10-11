@@ -33,7 +33,7 @@ namespace AccountFormsApp
 			accService.CreateAccount(accountName, AccountType.Silver);
 
 			listCurrentAccounts.Items.Add(accountName);
-			txtAccountName.Text = "";
+			txtAccountName.ResetText();
 		}
 
 		//Get balance from selected account
@@ -43,6 +43,11 @@ namespace AccountFormsApp
 			Decimal balance = accService.GetAccountBalance(accountName);
 
 			txtAccountBalance.Text = balance.ToString();
+
+			txtDepositAmount.ReadOnly = false;
+			txtWithdrawAmount.ReadOnly = false;
+			btnDeposit.Enabled = true;
+			btnWithdraw.Enabled = true;
 		}
 
 		//Add deposit amount to balance of selected account
@@ -54,7 +59,7 @@ namespace AccountFormsApp
 			accService.Deposit(accountName, depositAmount);
 
 			txtAccountBalance.Text = accService.GetAccountBalance(accountName).ToString();
-			txtDepositAmount.Text = "";
+			txtDepositAmount.ResetText();
 		}
 
 		//Remove withdraw amount from balance of selected account
@@ -66,7 +71,7 @@ namespace AccountFormsApp
 			accService.Withdrawal(accountName, withdrawAmount);
 
 			txtAccountBalance.Text = accService.GetAccountBalance(accountName).ToString();
-			txtWithdrawAmount.Text = "";
+			txtWithdrawAmount.ResetText();
 		}
 	}
 }

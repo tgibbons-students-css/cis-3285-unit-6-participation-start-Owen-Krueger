@@ -101,6 +101,7 @@
 			// 
 			this.txtDepositAmount.Location = new System.Drawing.Point(286, 191);
 			this.txtDepositAmount.Name = "txtDepositAmount";
+			this.txtDepositAmount.ReadOnly = true;
 			this.txtDepositAmount.Size = new System.Drawing.Size(100, 20);
 			this.txtDepositAmount.TabIndex = 7;
 			// 
@@ -116,6 +117,7 @@
 			// 
 			this.txtWithdrawAmount.Location = new System.Drawing.Point(286, 217);
 			this.txtWithdrawAmount.Name = "txtWithdrawAmount";
+			this.txtWithdrawAmount.ReadOnly = true;
 			this.txtWithdrawAmount.Size = new System.Drawing.Size(100, 20);
 			this.txtWithdrawAmount.TabIndex = 9;
 			// 
@@ -139,6 +141,7 @@
 			// 
 			// btnDeposit
 			// 
+			this.btnDeposit.Enabled = false;
 			this.btnDeposit.Location = new System.Drawing.Point(205, 188);
 			this.btnDeposit.Name = "btnDeposit";
 			this.btnDeposit.Size = new System.Drawing.Size(75, 23);
@@ -149,6 +152,7 @@
 			// 
 			// btnWithdraw
 			// 
+			this.btnWithdraw.Enabled = false;
 			this.btnWithdraw.Location = new System.Drawing.Point(205, 214);
 			this.btnWithdraw.Name = "btnWithdraw";
 			this.btnWithdraw.Size = new System.Drawing.Size(75, 23);
@@ -178,7 +182,7 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.Name = "Form1";
-			this.Text = "Form1";
+			this.Text = "Wells Fargo Account Creator";
 			this.Load += new System.EventHandler(this.Form1_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
