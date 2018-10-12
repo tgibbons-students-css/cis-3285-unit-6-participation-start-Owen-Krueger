@@ -50,7 +50,11 @@ namespace Services
         // withdrawal the given account into the account named
         {
 			AccountBase acc = FindAccount(accountName);
-			acc.AddTransaction(amount*-1);
+            //Check if withdrawl would leave them with less than $0
+            if (acc.Balance - amount >= 0)
+            {
+                acc.AddTransaction(amount * -1);
+            }
         }
 
         private AccountBase FindAccount(string accountName)

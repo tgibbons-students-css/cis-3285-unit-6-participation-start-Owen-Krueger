@@ -59,24 +59,34 @@ namespace AccountFormsApp
 		private void btnDeposit_Click(object sender, EventArgs e)
 		{
 			string accountName = listCurrentAccounts.SelectedItem.ToString();
-			Decimal depositAmount = Decimal.Parse(txtDepositAmount.Text);
+            Decimal depositAmount;
+            //Check if value is empty and that it can be parsed to a Decimal value
+            if (!string.IsNullOrWhiteSpace(txtDepositAmount.Text) &&
+                Decimal.TryParse(txtDepositAmount.Text, out depositAmount))
+            {
+                //Deposit amount into balance
+                accService.Deposit(accountName, depositAmount);
 
-			accService.Deposit(accountName, depositAmount);
-
-			txtAccountBalance.Text = accService.GetAccountBalance(accountName).ToString();
-			txtDepositAmount.ResetText();
+                //Update balance with new balance
+                txtAccountBalance.Text = accService.GetAccountBalance(accountName).ToString();
+                //Reset deposit field
+                txtDepositAmount.ResetText();
+            }
 		}
 
 		//Remove withdraw amount from balance of selected account
 		private void btnWithdraw_Click(object sender, EventArgs e)
 		{
 			string accountName = listCurrentAccounts.SelectedItem.ToString();
-			Decimal withdrawAmount = Decimal.Parse(txtWithdrawAmount.Text);
+            Decimal withdrawlAmount;
+            if (!string.IsNullOrWhiteSpace(txtWithdrawAmount.Text) &&
+                Decimal.TryParse(txtWithdrawAmount.Text, out withdrawlAmount))
+            {
+                accService.Withdrawal(accountName, withdrawlAmount);
 
-			accService.Withdrawal(accountName, withdrawAmount);
-
-			txtAccountBalance.Text = accService.GetAccountBalance(accountName).ToString();
-			txtWithdrawAmount.ResetText();
+                txtAccountBalance.Text = accService.GetAccountBalance(accountName).ToString();
+                txtWithdrawAmount.ResetText();
+            }			
 		}
 	}
 }
