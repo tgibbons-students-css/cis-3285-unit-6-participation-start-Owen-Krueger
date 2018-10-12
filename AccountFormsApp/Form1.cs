@@ -32,10 +32,14 @@ namespace AccountFormsApp
 			//Check if Account Name is Null or a whitespace
 			if (!string.IsNullOrWhiteSpace(txtAccountName.Text))
 			{
+                //Set new account name to account name field
 				string accountName = txtAccountName.Text;
+                //Currently, all accounts made are an Account Type of Silver
 				accService.CreateAccount(accountName, AccountType.Silver);
 
+                //Add account to list box of current accounts
 				listCurrentAccounts.Items.Add(accountName);
+                //Reset account name text box
 				txtAccountName.ResetText();
 
 			}
@@ -44,13 +48,19 @@ namespace AccountFormsApp
 		//Get balance from selected account
 		private void listCurrentAccounts_SelectedIndexChanged(object sender, EventArgs e)
 		{
+            //Get account name from selected item in list box
 			string accountName = listCurrentAccounts.SelectedItem.ToString();
+            //Get balance from account name
 			Decimal balance = accService.GetAccountBalance(accountName);
 
+            //Set account balance text box to account balance
 			txtAccountBalance.Text = balance.ToString();
 
+            //Allow user to enter deposit and withdrawl amounts into textboxes
 			txtDepositAmount.ReadOnly = false;
 			txtWithdrawAmount.ReadOnly = false;
+
+            //Allow user to click deposit and withdraw buttons on form
 			btnDeposit.Enabled = true;
 			btnWithdraw.Enabled = true;
 		}
@@ -67,7 +77,7 @@ namespace AccountFormsApp
                 //Deposit amount into balance
                 accService.Deposit(accountName, depositAmount);
 
-                //Update balance with new balance
+                //Update balance textbox with new balance
                 txtAccountBalance.Text = accService.GetAccountBalance(accountName).ToString();
                 //Reset deposit field
                 txtDepositAmount.ResetText();
@@ -79,12 +89,16 @@ namespace AccountFormsApp
 		{
 			string accountName = listCurrentAccounts.SelectedItem.ToString();
             Decimal withdrawlAmount;
+            //Check if value is empty and that it can be parsed to a Decimal value
             if (!string.IsNullOrWhiteSpace(txtWithdrawAmount.Text) &&
                 Decimal.TryParse(txtWithdrawAmount.Text, out withdrawlAmount))
             {
+                //Withdraw amount from balance
                 accService.Withdrawal(accountName, withdrawlAmount);
 
+                //Update balance textbox with new balance
                 txtAccountBalance.Text = accService.GetAccountBalance(accountName).ToString();
+                //Reset withdraw field
                 txtWithdrawAmount.ResetText();
             }			
 		}

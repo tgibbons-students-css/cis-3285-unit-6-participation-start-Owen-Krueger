@@ -53,6 +53,7 @@ namespace Services
             //Check if withdrawl would leave them with less than $0
             if (acc.Balance - amount >= 0)
             {
+                //Deposit amount by -1, which acts as a withdrawl
                 acc.AddTransaction(amount * -1);
             }
         }
